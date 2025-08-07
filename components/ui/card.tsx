@@ -1,15 +1,9 @@
 // components/ui/card.tsx
-import { PropsWithChildren, HTMLAttributes } from "react";
+import { PropsWithChildren } from "react";
 
-type DivProps = HTMLAttributes<HTMLDivElement> & {
-  className?: string;
-};
+type DivProps = React.ComponentProps<"div"> & { className?: string };
 
-export function Card({
-  className = "",
-  children,
-  ...props
-}: PropsWithChildren<DivProps>) {
+export function Card({ className = "", children, ...props }: PropsWithChildren<DivProps>) {
   return (
     <div {...props} className={`rounded-xl border ${className}`}>
       {children}
@@ -17,11 +11,7 @@ export function Card({
   );
 }
 
-export function CardContent({
-  className = "",
-  children,
-  ...props
-}: PropsWithChildren<DivProps>) {
+export function CardContent({ className = "", children, ...props }: PropsWithChildren<DivProps>) {
   return (
     <div {...props} className={`p-4 ${className}`}>
       {children}
