@@ -2,153 +2,169 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Music, Instagram, Youtube, Sparkles, PlayCircle } from "lucide-react";
-import { motion } from "framer-motion";
+import { Mail, Music, Instagram, Youtube, PlayCircle } from "lucide-react";
+import { motion, type HTMLMotionProps } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
 
+const MotionH1 = (props: HTMLMotionProps<"h1"> & React.HTMLAttributes<HTMLHeadingElement>) => (
+  <motion.h1 {...props} />
+);
+
+const MotionP = (props: HTMLMotionProps<"p"> & React.HTMLAttributes<HTMLParagraphElement>) => (
+  <motion.p {...props} />
+);
+
+const MotionDiv = (props: HTMLMotionProps<"div"> & React.HTMLAttributes<HTMLDivElement>) => (
+  <motion.div {...props} />
+);
+
 export default function SHXNlightStudios() {
-        const tagRef = useRef<HTMLAudioElement | null>(null);
-        const playTag = () => {
-                if (tagRef.current) { tagRef.current.currentTime = 0; tagRef.current.play(); }
-        };
-        return (
-                <div className="min-h-screen bg-black text-white font-sans">
-                        {/* HERO with video background */}
-                        <section className="relative h-[90vh] w-full overflow-hidden">
-                                <video
-                                        className="absolute inset-0 h-full w-full object-cover opacity-60"
-                                        autoPlay playsInline muted loop poster="/hero-poster.jpg"
-                                >
-                                        <source src="/video/club-vibe.mp4" type="video/mp4" />
-                                </video>
-                                <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black" />
-                                <div className="relative z-10 flex h-full flex-col items-center justify-center text-center px-6">
-                                        <motion.h1
-                                                {...{ className: "text-5xl md:text-7xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 via-purple-400 to-cyan-400 drop-shadow-[0_0_25px_rgba(255,0,255,0.25)]" }}
-                                                initial={{ opacity: 0, y: 20 }}
-                                                animate={{ opacity: 1, y: 0 }}
-                                                transition={{ duration: 0.8 }}
-                                        >
-                                                SHXNlight Studios
-                                        </motion.h1>
+  const tagRef = useRef<HTMLAudioElement | null>(null);
 
-                                        <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .15, duration: .7 }}
-                                                className="mt-4 text-xl md:text-2xl text-zinc-200">
-                                                Illuminate Your Sound
-                                        </motion.p>
-                                        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .3, duration: .6 }}
-                                                className="mt-8 flex flex-wrap items-center justify-center gap-3">
-                                                <Button onClick={playTag} className="gap-2 bg-gradient-to-r from-purple-500 to-pink-500 hover:opacity-90 border-none">
-                                                        <PlayCircle className="h-5 w-5" /> Play Tag — “SHXNlight Studios… Illuminate”
-                                                </Button>
-                                                <a href="#featured" className="inline-flex">
-                                                        <Button className="border-zinc-700 text-white hover:bg-zinc-800"> <Music className="h-5 w-5 mr-2" /> Listen Now </Button>
-                                                </a>
-                                                <a href="#booking" className="inline-flex">
-                                                        <Button className="border-zinc-700 text-white hover:bg-zinc-800"> Book a Session </Button>
-                                                </a>
-                                        </motion.div>
-                                        <audio ref={tagRef} src="/audio/SHXNlight_Studios_Tag.mp3" preload="auto" />
-                                </div>
-                                {/* subtle particles */}
-                                <div className="pointer-events-none absolute inset-0" aria-hidden>
-                                        <div className="absolute -top-24 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full blur-3xl bg-fuchsia-500/20" />
-                                        <div className="absolute bottom-10 right-10 h-72 w-72 rounded-full blur-3xl bg-cyan-500/10" />
-                                </div>
-                        </section>
+  const playTag = () => {
+    if (tagRef.current) {
+      tagRef.current.currentTime = 0;
+      tagRef.current.play();
+    }
+  };
 
-                        {/* ABOUT */}
-                        <section className="relative px-6 py-16 md:py-24 bg-gradient-to-b from-black to-zinc-950">
-                                <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 md:grid-cols-2">
-                                        <div className="space-y-4">
-                                                <h2 className="text-3xl md:text-4xl font-bold">We Make Nights Move</h2>
-                                                <p className="text-zinc-300 leading-relaxed">
-                                                        ShXnLight Studios creates and distributes music people can’t help but dance and sing to.
-                                                        From club anthems to intimate grooves, we craft records with precision, warmth, and undeniable energy.
-                                                </p>
-                                                <div className="flex items-center gap-3 text-zinc-300">
-                                                        <Sparkles className="text-fuchsia-400" />
-                                                        <span>Production · Mixing · Mastering · Distribution</span>
-                                                </div>
-                                        </div>
-                                        <div className="relative">
-                                                <Image src="/images/booth.png" alt="Studio Booth" width={1200} height={800} className="rounded-2xl shadow-2xl" />
-                                                <div className="absolute -bottom-6 -left-6 h-32 w-32 rounded-full bg-fuchsia-500/20 blur-2xl" />
-                                        </div>
-                                </div>
-                        </section>
+  return (
+    <div className="min-h-screen bg-black text-white font-sans">
+      {/* HERO */}
+      <section className="relative h-[90vh] w-full overflow-hidden">
+        <video
+          className="absolute inset-0 h-full w-full object-cover opacity-60"
+          autoPlay
+          playsInline
+          muted
+          loop
+          poster="/hero-poster.jpg"
+        >
+          <source src="/video/club-vibe.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black" />
 
-                        {/* FEATURED */}
-                        <section id="featured" className="px-6 py-16 md:py-24 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-zinc-900 via-black to-black">
-                                <div className="mx-auto max-w-6xl">
-                                        <h2 className="text-3xl md:text-4xl font-bold mb-6">Featured Drops</h2>
-                                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                                {[1, 2, 3].map((i) => (
-                                                        <Card key={i} className="bg-zinc-900/70 border-zinc-800 hover:bg-zinc-900 transition">
-                                                                <CardContent className="p-4 space-y-3">
-                                                                        <div className="relative aspect-square w-full overflow-hidden rounded-xl">
-                                                                                <Image src={`/images/covers/cover-${i}.jpg`} alt={`Cover ${i}`} fill className="object-cover scale-105 hover:scale-110 transition-transform duration-500" />
-                                                                        </div>
-                                                                        <div className="flex items-center justify-between">
-                                                                                <span className="font-semibold">Track {i}</span>
-                                                                                <Button className="border-zinc-700 text-white hover:bg-zinc-800 h-9 px-3">
-                                                                                        <Music className="h-4 w-4 mr-1" /> Play
-                                                                                </Button>
-                                                                        </div>
-                                                                </CardContent>
-                                                        </Card>
-                                                ))}
-                                        </div>
-                                </div>
-                        </section>
+        <div className="relative z-10 flex h-full flex-col items-center justify-center text-center px-6">
+          <MotionH1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-5xl md:text-7xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 via-purple-400 to-cyan-400 drop-shadow-[0_0_25px_rgba(255,0,255,0.25)]"
+          >
+            SHXNlight Studios
+          </MotionH1>
 
-                        {/* BOOKING */}
-                        <section id="booking" className="px-6 py-16 md:py-24 bg-black/90">
-                                <div className="mx-auto max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-8">
-                                        <Card className="bg-zinc-900 border-zinc-800">
-                                                <CardContent className="p-6 space-y-4">
-                                                        <h3 className="text-2xl font-bold">Book a Session</h3>
-                                                        <Input placeholder="Your Name" className="bg-zinc-950 border-zinc-800" />
-                                                        <Input placeholder="Email Address" type="email" className="bg-zinc-950 border-zinc-800" />
-                                                        <Textarea placeholder="What do you need? (Production, Mixing, Mastering)" className="bg-zinc-950 border-zinc-800" />
-                                                        <a href="mailto:music@shxnlightstudios.com?subject=Booking%20Request%20-%20SHXNlight%20Studios">
-                                                                <Button className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:opacity-90 border-none">Request Booking</Button>
-                                                        </a>
-                                                </CardContent>
-                                        </Card>
+          <MotionP
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.15, duration: 0.7 }}
+            className="mt-4 text-xl md:text-2xl text-zinc-200"
+          >
+            Illuminate Your Sound
+          </MotionP>
 
-                                        <Card className="bg-zinc-900 border-zinc-800">
-                                                <CardContent className="p-6 space-y-4">
-                                                        <h3 className="text-2xl font-bold">Connect</h3>
-                                                        <div className="space-y-3">
-                                                                <a target="_blank" rel="noreferrer" href="https://open.spotify.com/artist/5M9GQw3e65ZA4EiAXeEtXT?si=QgnhWdfgRwm4irZAHz-Mug" className="inline-flex w-full">
-                                                                        <Button className="w-full justify-start border-zinc-700 text-white hover:bg-zinc-800">
-                                                                                <Music className="mr-2" /> Spotify
-                                                                        </Button>
-                                                                </a>
-                                                                <a target="_blank" rel="noreferrer" href="https://youtube.com/@shxnlightstudios?si=8qubAg2iS_TojdS0" className="inline-flex w-full">
-                                                                        <Button className="w-full justify-start border-zinc-700 text-white hover:bg-zinc-800">
-                                                                                <Youtube className="mr-2" /> YouTube
-                                                                        </Button>
-                                                                </a>
-                                                                <a target="_blank" rel="noreferrer" href="https://www.instagram.com/shxnlightstudios?igsh=MTcyOWJkZ2VlcG1uZQ==" className="inline-flex w-full">
-                                                                        <Button className="w-full justify-start border-zinc-700 text-white hover:bg-zinc-800">
-                                                                                <Instagram className="mr-2" /> Instagram
-                                                                        </Button>
-                                                                </a>
-                                                                <Button className="w-full justify-start border-zinc-700 text-white hover:bg-zinc-800">
-                                                                        <Mail className="mr-2" /> music@shxnlightstudios.com
-                                                                </Button>
-                                                        </div>
-                                                </CardContent>
-                                        </Card>
-                                </div>
-                        </section>
+          <MotionDiv
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="mt-8 flex flex-wrap items-center justify-center gap-3"
+          >
+            <Button onClick={playTag} className="gap-2 bg-gradient-to-r from-purple-500 to-pink-500 hover:opacity-90">
+              <PlayCircle className="h-5 w-5" />
+              Play Tag — “SHXNlight Studios… Illuminate”
+            </Button>
+            <a href="#featured" className="inline-flex">
+              <Button variant="outline" className="border-zinc-700 text-white hover:bg-zinc-800">
+                <Music className="h-5 w-5 mr-2" /> Listen Now
+              </Button>
+            </a>
+            <a href="#booking" className="inline-flex">
+              <Button variant="outline" className="border-zinc-700 text-white hover:bg-zinc-800">
+                Book a Session
+              </Button>
+            </a>
+          </MotionDiv>
 
-                        <footer className="text-center text-zinc-500 text-sm py-10">
-                                &copy; {new Date().getFullYear()} SHXNlight Studios LLC. Illuminate.
-                        </footer>
-                </div>
-        );
+          <audio ref={tagRef} src="/audio/shxnlight-tag.mp3" preload="auto" />
+        </div>
+
+        <div className="pointer-events-none absolute inset-0" aria-hidden>
+          <div className="absolute -top-24 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full blur-3xl bg-fuchsia-500/20" />
+          <div className="absolute bottom-10 right-10 h-72 w-72 rounded-full blur-3xl bg-cyan-500/10" />
+        </div>
+      </section>
+
+      {/* FEATURED */}
+      <section id="featured" className="px-6 py-16 md:py-24 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-zinc-900 via-black to-black">
+        <div className="mx-auto max-w-6xl">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Featured Drops</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[1, 2, 3].map((i) => (
+              <Card key={i} className="bg-zinc-900/70 border-zinc-800 hover:bg-zinc-900 transition">
+                <CardContent className="p-4 space-y-3">
+                  <div className="relative aspect-square w-full overflow-hidden rounded-xl">
+                    <Image src={`/images/covers/cover-${i}.jpg`} alt={`Cover ${i}`} fill className="object-cover scale-105 hover:scale-110 transition-transform duration-500" />
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="font-semibold">Track {i}</span>
+                    <Button className="border-zinc-700 text-white hover:bg-zinc-800 h-9 px-3">
+                      <Music className="h-4 w-4 mr-1" /> Play
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* BOOKING */}
+      <section id="booking" className="px-6 py-16 md:py-24 bg-black/90">
+        <div className="mx-auto max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-8">
+          <Card className="bg-zinc-900 border-zinc-800">
+            <CardContent className="p-6 space-y-4">
+              <h3 className="text-2xl font-bold">Book a Session</h3>
+              <Input placeholder="Your Name" className="bg-zinc-950 border-zinc-800" />
+              <Input placeholder="Email Address" type="email" className="bg-zinc-950 border-zinc-800" />
+              <Textarea placeholder="What do you need? (Production, Mixing, Mastering)" className="bg-zinc-950 border-zinc-800" />
+              <a href="mailto:music@shxnlightstudios.com?subject=Booking%20Request%20-%20SHXNlight%20Studios">
+                <Button className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:opacity-90 border-none">Request Booking</Button>
+              </a>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-zinc-900 border-zinc-800">
+            <CardContent className="p-6 space-y-4">
+              <h3 className="text-2xl font-bold">Connect</h3>
+              <div className="space-y-3">
+                <a target="_blank" rel="noreferrer" href="https://open.spotify.com/artist/5M9GQw3e65ZA4EiAXeEtXT?si=QgnhWdfgRwm4irZAHz-Mug" className="inline-flex w-full">
+                  <Button className="w-full justify-start border-zinc-700 text-white hover:bg-zinc-800">
+                    <Music className="mr-2" /> Spotify
+                  </Button>
+                </a>
+                <a target="_blank" rel="noreferrer" href="https://youtube.com/@shxnlightstudios?si=8qubAg2iS_TojdS0" className="inline-flex w-full">
+                  <Button className="w-full justify-start border-zinc-700 text-white hover:bg-zinc-800">
+                    <Youtube className="mr-2" /> YouTube
+                  </Button>
+                </a>
+                <a target="_blank" rel="noreferrer" href="https://www.instagram.com/shxnlightstudios" className="inline-flex w-full">
+                  <Button className="w-full justify-start border-zinc-700 text-white hover:bg-zinc-800">
+                    <Instagram className="mr-2" /> Instagram
+                  </Button>
+                </a>
+                <Button className="w-full justify-start border-zinc-700 text-white hover:bg-zinc-800">
+                  <Mail className="mr-2" /> music@shxnlightstudios.com
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      <footer className="text-center text-zinc-500 text-sm py-10">
+        &copy; {new Date().getFullYear()} SHXNlight Studios LLC. Illuminate.
+      </footer>
+    </div>
+  );
 }
