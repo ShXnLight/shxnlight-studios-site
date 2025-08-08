@@ -95,29 +95,80 @@ export default function SHXNlightStudios() {
         </div>
       </section>
 
-      {/* FEATURED */}
-      <section id="featured" className="px-6 py-16 md:py-24 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-zinc-900 via-black to-black">
-        <div className="mx-auto max-w-6xl">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Featured Drops</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[1, 2, 3].map((i) => (
-              <Card key={i} className="bg-zinc-900/70 border-zinc-800 hover:bg-zinc-900 transition">
-                <CardContent className="p-4 space-y-3">
-                  <div className="relative aspect-square w-full overflow-hidden rounded-xl">
-                    <Image src={`/images/covers/cover-${i}.jpg`} alt={`Cover ${i}`} fill className="object-cover scale-105 hover:scale-110 transition-transform duration-500" />
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="font-semibold">Track {i}</span>
-                    <Button className="border-zinc-700 text-white hover:bg-zinc-800 h-9 px-3">
-                      <Music className="h-4 w-4 mr-1" /> Play
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+     {/* FEATURED */}
+<section
+  id="featured"
+  className="px-6 py-16 md:py-24 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-zinc-900 via-black to-black"
+>
+  <div className="mx-auto max-w-6xl">
+    <h2 className="text-3xl md:text-4xl font-bold mb-6">Featured Drops</h2>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {/* Track 1 */}
+      <Card className="bg-zinc-900/70 border-zinc-800 hover:bg-zinc-900 transition">
+        <CardContent className="p-4 space-y-3">
+          <div className="relative aspect-square w-full overflow-hidden rounded-xl">
+            <Image
+              src="/images/covers/boy-i-see-you-watching.png"
+              alt="Boy, I See You Watching"
+              fill
+              className="object-cover scale-105 hover:scale-110 transition-transform duration-500"
+            />
           </div>
-        </div>
-      </section>
+          <div className="flex items-center justify-between">
+            <span className="font-semibold">Boy, I See You Watching</span>
+            <audio controls className="w-28">
+              <source src="/audio/boy-i-see-you-watching.mp3" type="audio/mpeg" />
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Track 2 */}
+      <Card className="bg-zinc-900/70 border-zinc-800 hover:bg-zinc-900 transition">
+        <CardContent className="p-4 space-y-3">
+          <div className="relative aspect-square w-full overflow-hidden rounded-xl">
+            <Image
+              src="/images/covers/with-my-hands.png"
+              alt="With My Hands"
+              fill
+              className="object-cover scale-105 hover:scale-110 transition-transform duration-500"
+            />
+          </div>
+          <div className="flex items-center justify-between">
+            <span className="font-semibold">With My Hands</span>
+            <audio controls className="w-28">
+              <source src="/audio/with-my-hands.mp3" type="audio/mpeg" />
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Track 3 */}
+      <Card className="bg-zinc-900/70 border-zinc-800 hover:bg-zinc-900 transition">
+        <CardContent className="p-4 space-y-3">
+          <div className="relative aspect-square w-full overflow-hidden rounded-xl">
+            <Image
+              src="/images/covers/cocoa-skies.png"
+              alt="Cocoa Skies"
+              fill
+              className="object-cover scale-105 hover:scale-110 transition-transform duration-500"
+            />
+          </div>
+          <div className="flex items-center justify-between">
+            <span className="font-semibold">Cocoa Skies</span>
+            <audio controls className="w-28">
+              <source src="/audio/cocoa-skies.mp3" type="audio/mpeg" />
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  </div>
+</section>
+
 
       {/* BOOKING */}
       <section id="booking" className="px-6 py-16 md:py-24 bg-black/90">
